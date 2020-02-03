@@ -2,7 +2,21 @@
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
-$primary: #8c67ef;
+
+/* HSL */
+$primary: hsla(264%, 25%, 63%, 1);
+$secondary: hsla(331%, 71%, 80%, 1);
+$light: hsla(312%, 58%, 85%, 1);
+$lighter: hsla(306%, 25%, 92%, 1);
+$lightest: hsla(230%, 35%, 79%, 1);
+
+/* RGB */
+$primary: #49274A;
+$secondary: #94618E;
+$light: #F4DECB;
+$lighter: #F8EEE7;
+$lightest: lighten($lighter, 5%);
+
 $primary-invert: findColorInvert($primary);
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
@@ -25,6 +39,8 @@ $colors: (
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
+
+$main-background: white;
 
 // Import Bulma and Buefy styles
 @import "~bulma";
