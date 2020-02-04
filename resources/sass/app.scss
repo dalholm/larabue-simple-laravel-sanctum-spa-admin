@@ -92,6 +92,7 @@ header {
 section {
     &.main {
         background: white;
+        padding: 1rem 1.5rem;
         @include touch {
             margin: 10px;
         }
@@ -102,4 +103,14 @@ section {
     &.is-light {
         color: white;
     }
+}
+
+.divider {
+    border-top: 2px solid #eee;
+    width: 100%;
+    margin: 25px 0;
+}
+
+.chartjs-render-monitor {
+    height: 150px;
 }

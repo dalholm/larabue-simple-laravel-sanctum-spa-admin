@@ -1,71 +1,50 @@
 <template>
-    <div class="">
+    <div>
         <section>
-            <button class="button field is-danger" @click="selected = null"
-                    :disabled="!selected">
-                <b-icon icon="close"></b-icon>
-                <span>Clear selected</span>
-            </button>
+            <h1 class="title is-h2">Hello</h1>
+            <GChart
+                type="ColumnChart"
+                :data="chartData"
+                :options="chartOptions"
+                style="height: 500px;"
+            />
+            <div class="columns">
+                <div class="column">
 
-            <b-tabs>
-                <b-tab-item label="Table">
-                    <b-table
-                        :data="data"
-                        :columns="columns"
-                        :selected.sync="selected"
-                        focusable>
-                    </b-table>
-                </b-tab-item>
-
-                <b-tab-item label="Selected">
-                    <pre>{{ selected }}</pre>
-                </b-tab-item>
-            </b-tabs>
+                </div>
+                <div class="column"></div>
+            </div>
         </section>
-    </div>
 
+    </div>
 </template>
 
 <script>
     export default {
         data() {
-            const data = [
-                { 'id': 1, 'first_name': 'Jesse', 'last_name': 'Simmons', 'date': '2016-10-15 13:43:27', 'gender': 'Male' },
-                { 'id': 2, 'first_name': 'John', 'last_name': 'Jacobs', 'date': '2016-12-15 06:00:53', 'gender': 'Male' },
-                { 'id': 3, 'first_name': 'Tina', 'last_name': 'Gilbert', 'date': '2016-04-26 06:26:28', 'gender': 'Female' },
-                { 'id': 4, 'first_name': 'Clarence', 'last_name': 'Flores', 'date': '2016-04-10 10:28:46', 'gender': 'Male' },
-                { 'id': 5, 'first_name': 'Anne', 'last_name': 'Lee', 'date': '2016-12-06 14:38:38', 'gender': 'Female' }
-            ]
-
             return {
-                data,
-                selected: data[1],
-                columns: [
-                    {
-                        field: 'id',
-                        label: 'ID',
-                        width: '40',
-                        numeric: true
-                    },
-                    {
-                        field: 'first_name',
-                        label: 'First Name',
-                    },
-                    {
-                        field: 'last_name',
-                        label: 'Last Name',
-                    },
-                    {
-                        field: 'date',
-                        label: 'Date',
-                        centered: true
-                    },
-                    {
-                        field: 'gender',
-                        label: 'Gender',
+                // Array will be automatically processed with visualization.arrayToDataTable function
+                chartData: [
+                    ['Month', 'Sales', 'Expenses', 'Profit'],
+                    ['Jan', 1000, 400, 200],
+                    ['Feb', 1170, 460, 250],
+                    ['Mars', 660, 1120, 300],
+                    ['Apr', 1030, 540, 350],
+                    ['Jun', 1030, 540, 350],
+                    ['Jul', 1030, 540, 350],
+                    ['Aug', 2500, 540, 350],
+                    ['Sep', 1030, 540, 350],
+                    ['Oct', 1030, 540, 350],
+                    ['Nov', 1030, 540, 350],
+                    ['Dec', 1030, 540, 350],
+                ],
+                chartOptions: {
+                    chart: {
+                        title: 'Company Performance',
+                        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
                     }
-                ]
+                }
             }
-        }
+        },
     }
 </script>

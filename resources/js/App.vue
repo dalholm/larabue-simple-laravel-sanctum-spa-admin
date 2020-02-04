@@ -29,8 +29,13 @@
         </header>
         <main>
             <worker-component></worker-component>
-
             <section class="section main">
+                <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a href="#">Larabue</a></li>
+                        <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
+                    </ul>
+                </nav>
                 <div class="container">
                     <router-view></router-view>
                 </div>
