@@ -41,19 +41,18 @@
                                 <b-icon icon="menu-down"></b-icon>
                             </a>
 
-                            <b-dropdown-item
-                                @click="$router.push({name: 'profile'})">
-                                <b-icon icon="account"></b-icon>
-                                Profile
+                            <b-dropdown-item has-link>
+                                <router-link :to="{name: 'profile'}">
+                                    <b-icon icon="account"></b-icon>
+                                    Profile
+                                </router-link>
                             </b-dropdown-item>
                             <hr class="dropdown-divider">
-                            <b-dropdown-item
-                                value="logout"
-                                aria-role="menuitem"
-                                @click="$router.push({name: 'logout'})"
-                                >
-                                <b-icon icon="logout"></b-icon>
-                                Logout
+                            <b-dropdown-item has-link>
+                                <router-link :to="{name: 'logout'}">
+                                    <b-icon icon="logout"></b-icon>
+                                    Logout
+                                </router-link>
                             </b-dropdown-item>
                         </b-dropdown>
                     </div>
