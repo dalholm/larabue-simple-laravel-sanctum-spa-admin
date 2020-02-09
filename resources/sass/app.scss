@@ -12,16 +12,23 @@ header {
         @include touch {
             border-radius: 0;
         }
-        .navbar-brand {
+
+        .navbar-brand,
+        .logo {
             border-top-left-radius: 8px;
-            width: 80px;
+            @include touch {
+                border-radius: 0;
+            }
+        }
+
+        .navbar-brand {
             position: relative;
-            background: $primary-dark;
+
             .logo {
-                width: 100%;
+                width: 80px;
+                background: $primary-dark;
                 height: 100%;
                 font-weight: 800;
-
                 text-align: center;
                 line-height: 75px;
                 font-size: 30px;
@@ -31,6 +38,22 @@ header {
                 a {
                     color: white;
                 }
+
+                @include touch {
+                    background: $primary-dark;
+                    line-height: 47px;
+                    width: 80px;
+                    border-bottom: 7px solid $secondary;
+                }
+            }
+
+            @include touch {
+                width: auto;
+                background: transparent;
+            }
+
+            .navbar-burger {
+                color: white;
             }
         }
 
