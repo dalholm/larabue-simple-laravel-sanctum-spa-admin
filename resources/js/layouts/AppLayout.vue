@@ -84,6 +84,7 @@
                     <strong>Larabue</strong> by <a href="http://dalholm.se/">Mikael Dalholm</a>. The source code is licensed
                     <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
                 </p>
+                <p>Session expires in: {{ expires }}</p>
             </div>
         </footer>
 
@@ -101,6 +102,9 @@
             }
         },
         computed: {
+            expires() {
+                return this.$store.getters.expireString;
+            },
             user() {
                 return this.$store.getters.user || 'no one';
             }

@@ -1,14 +1,11 @@
 <template>
     <div class="container">
-        <main>
-            <transition
-                name="fade"
-                mode="out-in"
-            >
-                <router-view/>
-            </transition>
-
-        </main>
+        <transition
+            name="fade"
+            mode="out-in"
+        >
+            <router-view/>
+        </transition>
     </div>
 </template>
 

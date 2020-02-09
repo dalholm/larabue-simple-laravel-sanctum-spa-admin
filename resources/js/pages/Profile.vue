@@ -1,14 +1,136 @@
 <template>
     <div>
-        <h2 class="title is-2"> My account</h2>
+        <div class="column is-half">
+            <h2 class="title is-2">Profile</h2>
+            <div class="subtitle">Update your profile</div>
+
+            <p>Registred: {{user.created_at}}</p>
+            <p>Last updated: {{user.updated_at}}</p>
+            <div class="divider"></div>
+            <form method="#" @submit.prevent="updateProfile">
+
+                <b-field label="Name"
+                         :type="{'is-danger': hasError('name')}"
+                         :message="errorLabel('name')">
+                    <b-input
+                        placeholder="Name"
+                        icon="account"
+                        v-model="form.name"
+                    ></b-input>
+                </b-field>
+
+                <b-field label="Email"
+                         :type="{'is-danger': hasError('email')}"
+                         :message="errorLabel('email')">
+                    <b-input
+                        placeholder="Email"
+                        icon="email"
+                        v-model="form.email"
+                    ></b-input>
+                </b-field>
+
+                <b-field>
+                    <b-button
+                        type="is-primary"
+                        native-type="submit"
+                        icon-left="content-save">
+                        Update
+                    </b-button>
+                </b-field>
+            </form>
+
+            <div class="divider"></div>
+
+            <section>
+                <h4 class="title is-4">Update password</h4>
+                <form @submit.prevent="updatePassword">
+
+                    <b-field label="Password"
+                             :type="{'is-danger': hasError('password')}"
+                             :message="errorLabel('password')">
+                        <b-input
+                            type="password"
+                            placeholder="Password"
+                            icon="lock"
+                            password-reveal
+                            v-model="form.password"
+                        ></b-input>
+                    </b-field>
+
+                    <b-field label="Repeat password"
+                             :type="{'is-danger': hasError('password_confirmation')}"
+                             :message="errorLabel('password_confirmation')">
+                        <b-input
+                            type="password"
+                            placeholder="Password"
+                            icon="lock"
+                            password-reveal
+                            v-model="form.password_confirmation"
+                        ></b-input>
+                    </b-field>
+                    <b-field>
+                        <b-button
+                            type="is-primary"
+                            native-type="submit"
+                            icon-left="content-save">
+                            Update password
+                        </b-button>
+                    </b-field>
+
+                </form>
+            </section>
+        </div>
+
     </div>
 </template>
 
 <script>
+import {Form} from "vform";
+
 export default {
     data() {
         return {
-
+            changePassword: false,
+            form: new Form ({
+                name: '',
+                email: ''
+            }),
+            password: new Form({
+                password: '',
+                password_confirmation: '',
+            })
+        }
+    },
+    created() {
+        const user = this.$store.getters.user;
+        this.form.name = user.name;
+        this.form.email = user.email;
+    },
+    computed: {
+        user() {
+            return this.$store.getters.user;
+        }
+    },
+    methods: {
+        updateProfile() {
+            this.form.put('/api/user', this.form).then(response => {
+                this.$store.commit('set_user', response.data);
+                console.log(response);
+            }).catch(error => {
+                console.log(error);
+            });
+        },
+        updatePassword() {
+            console.log('password');
+        },
+        errorLabel(field) {
+            if (this.hasError(field)) {
+                return this.form.errors.get(field)
+            }
+            return '';
+        },
+        hasError(field) {
+            return this.form.errors.has(field);
         }
     }
 }

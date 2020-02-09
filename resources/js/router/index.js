@@ -17,12 +17,6 @@ router.beforeEach(async (to, from, next) => {
     // Start the route progress bar.
     store.commit('loading', true);
 
-    if (!store.getters.authCheck && store.getters.authToken) {
-        try {
-            await store.dispatch('fetchUser')
-        } catch (e) { }
-    }
-
     // default layout declared
     let layout = 'app-layout';
 
@@ -37,6 +31,13 @@ router.beforeEach(async (to, from, next) => {
 
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
+
+        if (!store.getters.authCheck && store.getters.authToken) {
+            try {
+                await store.dispatch('fetchUser')
+            } catch (e) { }
+        }
+
         // if not, redirect to login page.
         if (!store.getters.authToken) {
             next({
