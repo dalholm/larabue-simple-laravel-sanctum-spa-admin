@@ -104,7 +104,7 @@ header {
                 .profile {
                     border: none;
                     font-weight: bold;
-                    a:not(.dropdown-item) {
+                    a {
                         color: white;
                         &.is-active:not(:focus):not(:hover),
                         &.is-active,
@@ -112,6 +112,19 @@ header {
                             border-top-right-radius: $main-border-radius;
                             background: $light;
                             color: $primary;
+                        }
+                    }
+                    .has-link {
+                        a {
+                            color: $primary;
+
+                            &.is-active:not(:focus):not(:hover),
+                            &.is-active,
+                            &:hover {
+                                border-radius: 0;
+                                background: $light-grey;
+                                color: $primary;
+                            }
                         }
                     }
                 }
@@ -124,20 +137,11 @@ main {
     background: white;
 }
 .breadcrumb {
-    ul {
-        li {
-            a {
-                @include touch {
-                    //font-size: 10px;
-                }
-
-            }
-        }
-
-        @include touch {
-            //line-height: 0.2;
-            font-size: 11px;
-        }
+    @include touch {
+        font-size: 12px;
+        margin-bottom: 0.5rem!important;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid $grey;
     }
 }
 
@@ -168,6 +172,7 @@ section {
 
 
 footer {
+    background-color: $light-grey;
     border-bottom-right-radius: $main-border-radius;
     border-bottom-left-radius: $main-border-radius;
     @include touch {
