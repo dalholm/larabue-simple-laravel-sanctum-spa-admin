@@ -1,0 +1,47 @@
+
+.register,
+.login {
+    background: white;
+    width: 350px;
+    box-shadow: 0px 0px 30px -15px rgba(0,0,0,0.75);
+    border-radius: 8px;
+    margin:50px auto;
+    padding-bottom: 25px;
+
+    @include touch {
+        width: 90%;
+    }
+
+    header {
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+        background: $primary;
+        text-align: center;
+        line-height: 50px;
+        color: white;
+        font-weight: 800;
+        font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+        .icon {
+            border-top-left-radius: 8px;
+            background: $primary-dark;
+            width: 50px;
+            height: 100%;
+            vertical-align: middle;
+        }
+        h1 {
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-right: 15px;
+        }
+    }
+
+    section {
+        padding: 1rem;
+    }
+
+    footer {
+
+    }
+}

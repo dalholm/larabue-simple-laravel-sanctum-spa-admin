@@ -1,68 +1,22 @@
 <template>
-    <div class="container app">
-        <header>
-            <div class="navbar">
-                <div class="navbar-brand">
-                    <div class="logo">
-                        <router-link :to="{name: 'dashboard'}">
-                            LB
-                        </router-link>
-                    </div>
-                </div>
-                <div class="navbar-menu">
-                    <ul>
-                        <li>
-                            <router-link :to="{name: 'forms'}">
-                                <i class="mdi mdi-database"></i>
-                                Forms
-                            </router-link>
-                        </li>
-                        <li>
-                            <router-link :to="{name: 'currencies'}">
-                                <i class="mdi mdi-currency-eur"></i>
-                                Currencies
-                            </router-link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-        <main>
-            <worker-component></worker-component>
-            <section class="section main">
-                <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
-                    <ul>
-                        <li><a href="#">Larabue</a></li>
-                        <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
-                    </ul>
-                </nav>
-                <div class="container">
-                    <router-view></router-view>
-                </div>
-            </section>
-
-        </main>
-
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <p>
-                    <strong>Larabue</strong> by <a href="http://dalholm.se/">Mikael Dalholm</a>. The source code is licensed
-                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-                </p>
-            </div>
-        </footer>
-
+    <div>
+        <component v-bind:is="layout"></component>
     </div>
 </template>
 
 <script>
-import WorkerComponent from "./components/worker";
-export default {
-    components: {WorkerComponent},
-    data() {
-        return {
-
+    import AppLayout from "./layouts/AppLayout";
+    import SimpleLayout from "./layouts/SimpleLayout";
+    export default {
+        computed: {
+            layout () {
+                return this.$store.getters.layout
+            }
+        },
+        components: {
+            'app-layout': AppLayout,
+            'simple-layout': SimpleLayout
+            // define as many layouts you want for the application
         }
     }
-}
 </script>

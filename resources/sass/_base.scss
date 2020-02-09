@@ -1,0 +1,14 @@
+@import 'theme';
+@import '~@mdi/font/css/materialdesignicons.min.css';
+@import 'worker';
+
+html,
+body {
+    min-height: 100%;
+    margin: 0!important;
+}
+
+html {
+    background: #f9f5fa;
+    background: linear-gradient(365deg, #f9f5fa, #efe4f2);
+}
