@@ -113,15 +113,31 @@ export default {
     },
     methods: {
         updateProfile() {
-            this.form.put('/api/user', this.form).then(response => {
+            this.form.put('/api/user').then(response => {
                 this.$store.commit('set_user', response.data);
-                console.log(response);
+                this.$buefy.snackbar.open("Profile updated");
             }).catch(error => {
                 console.log(error);
             });
         },
         updatePassword() {
-            console.log('password');
+            this.form.patch('/api/user/password').then(response => {
+                this.$buefy.snackbar.open("Password updated");
+                this.resetPasswordFields();
+            }).catch(error => {
+                if (error.response.status === 500) {
+                    this.$buefy.snackbar.open({
+                        duration: 5000,
+                        message: 'Ops! Something went wrong',
+                        type: 'is-danger',
+                        position: 'is-top',
+                        actionText: 'Retry',
+                        onAction: () => {
+                            this.updatePassword();
+                        }
+                    })
+                }
+            });
         },
         errorLabel(field) {
             if (this.hasError(field)) {
@@ -131,6 +147,10 @@ export default {
         },
         hasError(field) {
             return this.form.errors.has(field);
+        },
+        resetPasswordFields() {
+            this.form.password = '';
+            this.form.password_confirmation = '';
         }
     }
 }

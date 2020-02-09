@@ -80,6 +80,7 @@ export default {
                 password: this.password
             }).then(response => {
                 this.loading = false;
+                this.$buefy.snackbar.open("Welcome!");
                 this.$router.push({ name: 'dashboard' });
             }).catch(e => {
                 this.loading = false;

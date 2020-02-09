@@ -19,6 +19,7 @@ Route::middleware('auth:api')->group(function () {
     // User
     Route::get('/user', 'UserController@get');
     Route::put('/user', 'UserController@put');
+    Route::patch('/user/password', 'UserController@password');
 
 });
 

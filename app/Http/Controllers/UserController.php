@@ -37,4 +37,18 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
     }
+
+    public function password(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        User::findOrFail(auth()->user()->id)
+            ->update([
+                'password' => Hash::make($request->password)
+            ]);
+
+        return response('',201);
+    }
 }
