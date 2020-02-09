@@ -1,6 +1,5 @@
 import Dashboard from "../pages/Dashboard";
 import Profile from "../pages/Profile";
-import ProfileSettings from "../pages/profile/Settings";
 
 import Login from "../pages/auth/Login";
 import Logout from "../pages/auth/Logout";
@@ -19,11 +18,6 @@ export default () => [
         path: '/profile',
         name: 'profile',
         component: Profile,
-        meta: { requiresAuth: true },
-    }, {
-        path: '/profile/settings',
-        name: 'profile_settings',
-        component: ProfileSettings,
         meta: { requiresAuth: true },
     }, {
         path: '/login',
