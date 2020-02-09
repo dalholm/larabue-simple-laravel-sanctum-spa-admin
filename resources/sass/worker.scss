@@ -5,7 +5,6 @@
     margin: 0;
 }
 .worker {
-    background-color: $main-background;
     @include touch {
         background-color: transparent;
     }

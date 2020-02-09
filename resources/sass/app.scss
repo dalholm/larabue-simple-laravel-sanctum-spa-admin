@@ -3,11 +3,24 @@
 @import 'login';
 
 
+.container {
+    &.app {
+        border-radius: 8px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        box-shadow: 0px 0px 30px -15px rgba(0,0,0,0.75);
+
+        @include touch {
+            margin-top: 0;
+            box-shadow: none;
+        }
+    }
+}
 
 header {
     .navbar {
-        border-top-right-radius: 8px;
-        border-top-left-radius: 8px;
+        border-top-right-radius: $main-border-radius;
+        border-top-left-radius: $main-border-radius;
         background: $primary;
         @include touch {
             border-radius: 0;
@@ -15,7 +28,7 @@ header {
 
         .navbar-brand,
         .logo {
-            border-top-left-radius: 8px;
+            border-top-left-radius: $main-border-radius;
             @include touch {
                 border-radius: 0;
             }
@@ -81,6 +94,10 @@ header {
                 &:hover {
                     background: $light;
                     cursor:pointer;
+                    color: $primary;
+                    i {
+                        color: $primary;
+                    }
                 }
             }
             .navbar-end {
@@ -92,8 +109,9 @@ header {
                         &.is-active:not(:focus):not(:hover),
                         &.is-active,
                         &:hover {
-                            border-top-right-radius: 8px;
+                            border-top-right-radius: $main-border-radius;
                             background: $light;
+                            color: $primary;
                         }
                     }
                 }
@@ -102,24 +120,32 @@ header {
     }
 }
 
-.container {
-    &.app {
-        border-radius: 8px;
-        margin-top: 50px;
-        box-shadow: 0px 0px 30px -15px rgba(0,0,0,0.75);
+main {
+    background: white;
+}
+.breadcrumb {
+    ul {
+        li {
+            a {
+                @include touch {
+                    //font-size: 10px;
+                }
+
+            }
+        }
 
         @include touch {
-            margin-top: 0;
+            //line-height: 0.2;
+            font-size: 11px;
         }
     }
 }
 
 section {
     &.main {
-        background: white;
         padding: 1rem 1.5rem;
         @include touch {
-            margin: 10px 10px 0 10px;
+            padding: 1rem;
         }
     }
 }
@@ -142,10 +168,9 @@ section {
 
 
 footer {
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    margin-bottom: 50px;
+    border-bottom-right-radius: $main-border-radius;
+    border-bottom-left-radius: $main-border-radius;
     @include touch {
-        margin: 0 10px 0 10px;
+        border-radius: 0;
     }
 }
