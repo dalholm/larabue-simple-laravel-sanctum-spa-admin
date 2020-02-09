@@ -1,7 +1,8 @@
 <template>
     <div>
         <section>
-            <h1 class="title is-h2">Hello</h1>
+            <h1 class="title is-2">Dashboard</h1>
+            <div class="subtitle">With sample chart from gChart</div>
             <GChart
                 type="ColumnChart"
                 :data="chartData"
