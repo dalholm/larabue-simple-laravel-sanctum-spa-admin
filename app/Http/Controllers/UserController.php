@@ -14,7 +14,7 @@ class UserController extends Controller
         return auth()->user();
     }
 
-    public function put(UserRequest $request)
+    public function patch(UserRequest $request)
     {
         return tap(User::findOrFail(auth()->user()->id))
             ->update([

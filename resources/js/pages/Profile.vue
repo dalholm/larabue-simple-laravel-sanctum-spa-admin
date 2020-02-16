@@ -114,7 +114,7 @@ export default {
     },
     methods: {
         updateProfile() {
-            this.form.put('/api/user').then(response => {
+            this.form.patch('/api/user').then(response => {
                 this.$store.commit('set_user', response.data);
                 this.$buefy.snackbar.open("Profile updated");
             }).catch(error => {
