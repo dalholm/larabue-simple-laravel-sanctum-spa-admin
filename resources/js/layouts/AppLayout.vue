@@ -5,7 +5,7 @@
                 <div class="navbar-brand">
                     <div class="logo">
                         <router-link :to="{name: 'dashboard'}">
-                            D
+                            IF
                         </router-link>
                     </div>
                     <a role="button" class="navbar-burger burger"
@@ -84,7 +84,7 @@
                     <strong>Larabue</strong> by <a href="http://dalholm.se/">Mikael Dalholm</a>. The source code is licensed
                     <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
                 </p>
-                <p>Session expires in: {{ expires }}</p>
+                <p>Session expires in: {{ expires | moment("YYYY-MM-DD : H:m")}}</p>
             </div>
         </footer>
 
@@ -103,7 +103,7 @@
         },
         computed: {
             expires() {
-                return this.$store.getters.expireString;
+                return this.$store.getters.expiresDate;
             },
             user() {
                 return this.$store.getters.user || 'no one';

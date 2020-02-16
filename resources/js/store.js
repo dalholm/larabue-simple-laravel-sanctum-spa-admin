@@ -15,8 +15,7 @@ export default new Vuex.Store({
         user: null,
         token: localStorage.getItem('access_token') || null,
         expires: localStorage.getItem('token_expires') || 0,
-        expiresTimerRunning: false,
-        timerInterval: 60, // Seconds
+        expiresDate: localStorage.getItem('token_expires_date') || null,
     },
     mutations: {
         appLoading(state, isLoading){
@@ -25,9 +24,6 @@ export default new Vuex.Store({
             } else {
                 state.appLoading -= 1;    
             }
-
-            console.log(state.appLoading);
-            //state.appLoading = isLoading;
         },
         set_layout (state, payload) {
             state.layout = payload;
@@ -35,37 +31,27 @@ export default new Vuex.Store({
         set_token (state, payload) {
             state.token = payload.token;
             state.expires = payload.expires;
+            state.expiresDate = payload.expiresDate;
         },
         logout (state) {
             state.token = null;
             state.user = null;
             state.expires = 0;
             state.expiresTimerRunning = false;
+            state.expiresDate = null;
         },
         set_user (state, user) {
             state.user = user;
-        },
-        countdown (state) {
-            state.expires -= 1 * state.timerInterval;
-        },
-        start_timer (state, payload) {
-            state.expiresTimerRunning = payload;
-        },
+        }
     },
     actions: {
-        countdown (context) {
-            context.commit('countdown');
-            localStorage.setItem('token_expires', context.getters.expires);
-            if (context.getters.expires <= 0) {
-                context.dispatch('logout');
-            }
-        },
         logout(context) {
             if (context.getters.authToken) {
                 return new Promise((resolve, reject) => {
                     axios.post('/api/logout').then((result) => {
                         localStorage.removeItem('access_token');
                         localStorage.removeItem('token_expires');
+                        localStorage.removeItem('token_expires_date');
                         context.commit('logout');
 
                         resolve(result);
@@ -85,9 +71,15 @@ export default new Vuex.Store({
                     const expires = result.data.expires_in;
                     localStorage.setItem('token_expires', expires);
                     localStorage.setItem('access_token', token);
+
+                    let expiresDate = new Date();
+                    expiresDate.setSeconds(expiresDate.getSeconds() + expires);
+
+                    localStorage.setItem('token_expires_date', expiresDate)
                     context.commit('set_token', {
                         token: token,
-                        expires: expires
+                        expires: expires,
+                        expiresDate: expiresDate
                     });
 
                     resolve(result);
@@ -132,26 +124,9 @@ export default new Vuex.Store({
         user (state) {
             return state.user
         },
-        expires (state) {
-            return state.expires
-        },
-        expiresTimerRunning (state) {
-            return state.expiresTimerRunning
-        },
-        timerInterval (state) {
-            return state.timerInterval * 1000;
-        },
-        expireString (state) {
-            let seconds = state.expires;
 
-            let days = Math.floor(seconds / (3600*24));
-            seconds  -= days*3600*24;
-            let hrs   = Math.floor(seconds / 3600);
-            seconds  -= hrs*3600;
-            let mnts = Math.floor(seconds / 60);
-            seconds  -= mnts*60;
-
-            return days+" days, "+hrs+" Hrs, "+mnts+" Minutes";
-        },
+        expiresDate (state) {
+            return state.expiresDate;
+        }
     }
 })

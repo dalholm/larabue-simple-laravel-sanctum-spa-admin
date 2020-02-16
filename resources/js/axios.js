@@ -33,6 +33,10 @@ axios.interceptors.response.use(function (response) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     store.commit('appLoading', false);
+
+    if (error.response.status === 401) {
+        store.dispatch('logout');
+    }
     return Promise.reject(error);
   });
 

@@ -32,8 +32,6 @@ Route::get('/js/{language}/lang', function ($language) {
 
         return $strings;
     });
-
-    sleep(2);
     return $strings;
 });
 
