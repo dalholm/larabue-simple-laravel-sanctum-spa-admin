@@ -18,11 +18,11 @@ Route::get('/', function () {
 });
 
 // Localization
-Route::get('/js/lang.js', function () {
-    $strings = Cache::remember('lang.js', 0, function () {
-        $lang = config('app.locale');
+Route::get('/js/{language}/lang', function ($language) {
 
-        $files   = glob(resource_path('lang/' . $lang . '/*.php'));
+    $strings = Cache::remember('lang.js', 0, function () use ($language) {
+
+        $files   = glob(resource_path('lang/' . $language . '/*.php'));
         $strings = [];
 
         foreach ($files as $file) {
@@ -33,10 +33,11 @@ Route::get('/js/lang.js', function () {
         return $strings;
     });
 
-    header('Content-Type: text/javascript');
-    echo('window.i18n = ' . json_encode($strings) . ';');
-    exit();
+    sleep(2);
+    return $strings;
 });
+
+
 
 Route::get('/{path}', function () {
     return view('app');

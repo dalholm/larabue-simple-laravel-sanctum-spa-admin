@@ -152,6 +152,6 @@ export default new Vuex.Store({
             seconds  -= mnts*60;
 
             return days+" days, "+hrs+" Hrs, "+mnts+" Minutes";
-        }
+        },
     }
 })

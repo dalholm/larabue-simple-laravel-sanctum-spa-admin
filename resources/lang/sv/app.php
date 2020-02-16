@@ -24,7 +24,7 @@ return [
     'update' => 'Uppdatera',
     'update_password' => 'Uppdatera lösenord',
     'update_profile' => 'Uppdatera profil',
-    'profile_subtitle' => 'Profile och inställningar',
+    'profile_subtitle' => 'Profil och inställningar',
     'registred' => 'Registrerad',
     'last_updated' => 'Senast uppdaterad',
 

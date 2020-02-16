@@ -1,5 +1,5 @@
 <template>
-    <div class="worker" :class="{ 'loading' : isLoading}"></div>
+    <div class="worker" :class="{ 'loading' : isLoading || applicationLoading}"></div>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['isLoading'])
+        ...mapState(['isLoading', 'applicationLoading'])
     },
 }
 </script>

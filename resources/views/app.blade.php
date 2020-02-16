@@ -20,7 +20,6 @@
             ];
         @endphp
         <script>window.config = {!! json_encode($config); !!};</script>
-        <script src="/js/lang.js"></script>
 
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
