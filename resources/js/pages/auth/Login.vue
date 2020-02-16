@@ -7,26 +7,26 @@
                         icon="account"
                     >
                     </b-icon>
-                    <h1>Welcome Back!</h1>
+                    <h1>{{ $t('app.welcome_back') }}</h1>
                 </header>
                 <section class="main">
                     <b-message type="is-danger" has-icon v-if="error">
-                        You have entered an invalid username or password
+                        {{ $t('auth.failed') }}
                     </b-message>
 
                     <form @submit.prevent="auth">
-                        <b-field label="Username">
+                        <b-field :label="$t('app.username')">
                             <b-input
-                                placeholder="Username"
+                                :placeholder="$t('app.username')"
                                 icon="email"
                                 v-model="username"
                             ></b-input>
                         </b-field>
 
-                        <b-field label="Password">
+                        <b-field :label="$t('app.password')">
                             <b-input
                                 type="password"
-                                placeholder="Password"
+                                :placeholder="$t('app.password')"
                                 icon="lock"
                                 v-model="password"
                                 password-reveal
@@ -39,14 +39,14 @@
                                 native-type="submit"
                                 :loading="loading"
                             >
-                                Sign in
+                                {{ $t('app.login_button') }}
                             </b-button>
                         </b-field>
                     </form>
 
                     <div class="divider"></div>
 
-                    <p class="is-centered">No account? - <router-link :to="{name: 'register'}">Register</router-link></p>
+                    <p class="is-centered">{{ $t('app.no_account') }} - <router-link :to="{name: 'register'}">{{ $t('app.register_account') }}</router-link></p>
 
                 </section>
 

@@ -44,14 +44,14 @@
                             <b-dropdown-item has-link>
                                 <router-link :to="{name: 'profile'}">
                                     <b-icon icon="account"></b-icon>
-                                    Profile
+                                    {{ $t('app.profile') }}
                                 </router-link>
                             </b-dropdown-item>
                             <hr class="dropdown-divider">
                             <b-dropdown-item has-link>
                                 <router-link :to="{name: 'logout'}">
                                     <b-icon icon="logout"></b-icon>
-                                    Logout
+                                    {{ $t('app.logout') }}
                                 </router-link>
                             </b-dropdown-item>
                         </b-dropdown>
