@@ -14,9 +14,6 @@ const router = new Router({
 
 router.beforeEach(async (to, from, next) => {
 
-    // Start the route progress bar.
-    store.commit('loading', true);
-
     // default layout declared
     let layout = 'app-layout';
 
@@ -50,7 +47,6 @@ router.beforeEach(async (to, from, next) => {
 
 router.afterEach((to, from) => {
     // Complete the animation of the route progress bar.
-    store.commit('loading', false);
 });
 
 export default router;

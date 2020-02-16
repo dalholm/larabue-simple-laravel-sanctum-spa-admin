@@ -1,5 +1,5 @@
 <template>
-    <div class="worker" :class="{ 'loading' : isLoading || applicationLoading}"></div>
+    <div class="worker" :class="{ 'loading' : loading}"></div>
 </template>
 
 <script>
@@ -12,7 +12,14 @@ export default {
         }
     },
     computed: {
-        ...mapState(['isLoading', 'applicationLoading'])
+        ...mapState(['appLoading']),
+        loading() {
+            if (this.appLoading > 0) {
+                return true;
+            }
+
+            return false;
+        }
     },
 }
 </script>

@@ -10,8 +10,7 @@ let defaults = {
 
 export default new Vuex.Store({
     state: {
-        applicationLoading: false,
-        isLoading: false,
+        appLoading: 0,
         layout: 'app-layout', // app-layout || simple-layout
         user: null,
         token: localStorage.getItem('access_token') || null,
@@ -20,11 +19,15 @@ export default new Vuex.Store({
         timerInterval: 60, // Seconds
     },
     mutations: {
-        applicationLoading(state, isLoading){
-            state.applicationLoading = isLoading;
-        },
-        loading(state, isLoading) {
-            state.isLoading = isLoading;
+        appLoading(state, isLoading){
+            if (isLoading) {
+                state.appLoading += 1;    
+            } else {
+                state.appLoading -= 1;    
+            }
+
+            console.log(state.appLoading);
+            //state.appLoading = isLoading;
         },
         set_layout (state, payload) {
             state.layout = payload;
@@ -131,9 +134,6 @@ export default new Vuex.Store({
         },
         expires (state) {
             return state.expires
-        },
-        isLoading (state) {
-            return state.isLoading
         },
         expiresTimerRunning (state) {
             return state.expiresTimerRunning

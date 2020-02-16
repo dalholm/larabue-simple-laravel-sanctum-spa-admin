@@ -8,7 +8,7 @@ Vue.use(VueAxios, axios);
 
 axios.interceptors.request.use(
     (config) => {
-        store.commit('applicationLoading', true);
+        store.commit('appLoading', true);
         let token = localStorage.getItem('access_token');
 
         if (token) {
@@ -19,7 +19,7 @@ axios.interceptors.request.use(
     },
 
     (error) => {
-        store.commit('applicationLoading', false);
+        store.commit('appLoading', false);
         return Promise.reject(error);
     }
 );
@@ -27,12 +27,12 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-    store.commit('applicationLoading', false);
+    store.commit('appLoading', false);
     return response;
   }, function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    store.commit('applicationLoading', false);
+    store.commit('appLoading', false);
     return Promise.reject(error);
   });
 
