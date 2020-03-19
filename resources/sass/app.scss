@@ -2,66 +2,66 @@
 
 @import 'login';
 
+
+
+
+.progress-wrapper {
+    margin-bottom: 0.5rem;
+    progress {
+        border-radius: 2px;
+    }
+}
 .container {
     &.app {
-        border-radius: 8px;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        box-shadow: 0px 0px 30px -15px rgba(0,0,0,0.75);
-
+        margin-top: 80px;
         @include touch {
-            margin-top: 0;
+            margin-top: 50px;
             box-shadow: none;
+        }
+    }
+}
+.has-margin-top {
+    margin-top: 2em;
+}
+.pre-formatted {
+    white-space: pre-wrap;
+}
+
+.panel {
+    .todo {
+        padding: 0.75rem;
+        border-bottom: 1px solid #dbdbdb;
+        border-left: 1px solid #dbdbdb;
+        border-right: 1px solid #dbdbdb;
+        margin: 0;
+    }
+}
+.control {
+    &.is-fullwidth {
+        input.input {
+            min-width: 100%!important;
         }
     }
 }
 
 header {
     .navbar {
-        border-top-right-radius: $main-border-radius;
-        border-top-left-radius: $main-border-radius;
         background: $primary;
+        border-bottom: 2px solid $primary;
         @include touch {
             border-radius: 0;
         }
 
-        .navbar-brand,
-        .logo {
-            border-top-left-radius: $main-border-radius;
-            @include touch {
-                border-radius: 0;
-            }
-        }
 
         .navbar-brand {
-            position: relative;
-
-            .logo {
-                width: 80px;
-                background: $primary-dark;
-                height: 100%;
-                font-weight: 800;
-                text-align: center;
-                line-height: 75px;
-                font-size: 30px;
-                border-right: 1px solid darken($primary, 2.5%);
-                border-bottom: 15px solid $secondary;
-
-                a {
-                    color: white;
-                }
-
-                @include touch {
-                    background: $primary-dark;
-                    line-height: 47px;
-                    width: 80px;
-                    border-bottom: 7px solid $secondary;
-                }
-            }
+            background: white;
 
             @include touch {
-                width: auto;
-                background: transparent;
+                background: $primary;
+                .logo {
+                    background: white;
+                    width: 100px;
+                }
             }
 
             .navbar-burger {
@@ -78,14 +78,12 @@ header {
                 text-align: center;
 
                 border-right: 1px solid darken($primary, 2.5%);
-                &:first-child {
-                    border-left: 1px solid darken($primary, 2.5%);
-                }
+
                 i {
                     width: 100%;
                     display: block;
                     font-size: 30px;
-                    color: $secondary;
+                    color: white;
                 }
 
                 &.is-active:not(:focus):not(:hover),
@@ -108,7 +106,6 @@ header {
                         &.is-active:not(:focus):not(:hover),
                         &.is-active,
                         &:hover {
-                            border-top-right-radius: $main-border-radius;
                             background: $light;
                             color: $primary;
                         }
@@ -157,6 +154,13 @@ section {
     }
 }
 
+.field {
+    .label {
+        font-weight: 500;
+        font-size: 13px;
+    }
+}
+
 .button {
     &.is-light {
         color: white;
@@ -164,7 +168,7 @@ section {
 }
 
 .divider {
-    border-top: 2px solid #eee;
+    border-top: 1px solid $grey;
     width: 100%;
     margin: 25px 0;
 }
@@ -173,6 +177,151 @@ section {
     height: 150px;
 }
 
+.consulting-form {
+    .column {
+        &.economy {
+            padding: 0.75rem 2rem;
+            //background: #f9f9f9;
+            @include touch {
+                padding: 0.75rem;
+            }
+        }
+    }
+}
+
+ul.summary {
+    margin:0;
+    list-style-type: none;
+    font-size: 13px;
+    li {
+        font-weight: 600;
+        span {
+            font-weight: normal;
+            float: right;
+        }
+    }
+}
+
+
+.box {
+    @include touch {
+        box-shadow: none;
+        padding: 0;
+    }
+}
+
+.b-tabs {
+    .tab-content {
+        padding: 1rem 0px;
+    }
+}
+
+.timer-button {
+    &.active {
+        i {
+            animation:blinking 1.2s infinite;
+        }
+
+    }
+
+}
+
+.modal-card {
+    header {
+        background: $primary;
+        color: white;
+        text-align: center;
+        .title,
+        .subtitle {
+            color: white;
+        }
+    }
+}
+
+
+//Debit modal
+.is-debit-modal {
+    .modal-card {
+        min-height: 400px;
+        .modal-card-body {
+            .box {
+                text-align: center;
+                font-size: 15px;
+                box-shadow: none;
+                border: 1px solid $grey;
+                @include touch {
+                    padding: 1rem 0;
+                }
+                i {
+                    display: block;
+                    width: 100%;
+                    font-size: 30px;
+                }
+                &.active {
+                    border: 1px solid $success;
+                }
+            }
+
+            .relation-type-input {
+                border-radius: 8px;
+                padding: 2rem;
+                background: $light-grey;
+            }
+            .relation-types {
+                margin-top: 2rem;
+            }
+            .debit-information {
+            }
+        }
+
+        .modal-card-foot {
+            justify-content: flex-end;
+        }
+    }
+}
+
+.autocomplete {
+    .dropdown-item {
+        span {
+            display: block;
+        }
+        border-bottom: 1px solid $grey;
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+.tabs-table {
+
+    .tabs {
+        margin-bottom: 0;
+
+    }
+    .box {
+        box-shadow: none;
+        border-left: 1px solid $grey;
+        border-bottom: 1px solid $grey;
+        border-right: 1px solid $grey;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}
+
+.debit-form {
+    background: $light-grey;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+
+@keyframes blinking{
+    0%{     opacity: 1; }
+    49%{    opacity: 1; }
+    60%{    opacity: 0; }
+    99%{    opacity: 0; }
+    100%{   opacity: 1; }
+}
 
 footer {
     background-color: $light-grey;

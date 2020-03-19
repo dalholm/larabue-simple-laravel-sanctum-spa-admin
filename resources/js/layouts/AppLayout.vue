@@ -1,11 +1,13 @@
 <template>
-    <div class="container app">
+    <div>
+        <worker-component></worker-component>
+        <div class="screen-lock" :class="{ 'lock' : appLoading}"></div>
         <header>
-            <div class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                     <div class="logo">
                         <router-link :to="{name: 'dashboard'}">
-                            IF
+                            Larabue
                         </router-link>
                     </div>
                     <a role="button" class="navbar-burger burger"
@@ -32,7 +34,9 @@
                         <b-dropdown
                             class="profile"
                             position="is-bottom-left"
-                            aria-role="menu">
+                            aria-role="menu"
+                            v-if="user"
+                        >
                             <a
                                 class="navbar-item"
                                 slot="trigger"
@@ -61,32 +65,32 @@
 
             </div>
         </header>
-        <main>
-            <worker-component></worker-component>
-            <section class="section main">
-                <breadcrumb/>
-                <div class="container">
-                    <transition
-                        name="fade"
-                        mode="out-in"
-                    >
-                        <router-view/>
-                    </transition>
+        <div class="container app">
+            <main>
+                <section class="section main">
+                    <breadcrumb/>
+                    <div class="container">
+                        <transition
+                            name="fade"
+                            mode="out-in"
+                        >
+                            <router-view/>
+                        </transition>
 
+                    </div>
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>
+                        <strong>Larabue</strong> by <a href="http://dalholm.se/">Mikael Dalholm</a>. The source code is licensed
+                        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+                    </p>
                 </div>
-            </section>
-
-        </main>
-
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <p>
-                    <strong>Larabue</strong> by <a href="http://dalholm.se/">Mikael Dalholm</a>. The source code is licensed
-                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-                </p>
-                <p>Session expires in: {{ expires | moment("YYYY-MM-DD : H:m")}}</p>
-            </div>
-        </footer>
+            </footer>
+        </div>
 
     </div>
 </template>
@@ -94,6 +98,7 @@
 <script>
     import WorkerComponent from '../components/worker'
     import Breadcrumb from "../components/breadcrumb";
+    import {mapState} from "vuex";
     export default {
         components: {Breadcrumb, WorkerComponent},
         data() {
@@ -102,12 +107,7 @@
             }
         },
         computed: {
-            expires() {
-                return this.$store.getters.expiresDate;
-            },
-            user() {
-                return this.$store.getters.user || 'no one';
-            }
-        }
+            ...mapState(['user', 'appLoading']),
+        },
     }
 </script>

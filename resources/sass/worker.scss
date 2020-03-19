@@ -2,7 +2,8 @@
 .worker, .worker:before {
     height: 5px;
     width: 100%;
-    margin: 0;
+    z-index: 9999;
+    //margin: 90px 0 0 0;
 }
 .worker {
     @include touch {
@@ -14,7 +15,7 @@
     }
 }
 .worker:before {
-    background-color: darken($primary, 2.5%);
+    background-color: #3a87a4;
     content: '';
     -webkit-animation: running-progress 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     animation: running-progress 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;

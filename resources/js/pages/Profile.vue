@@ -8,7 +8,7 @@
             <p>{{ $t('app.last_updated') }}: {{user.updated_at}}</p>
             <div class="divider"></div>
         </section>
-        <div class="columns">
+        <div class="columns" v-if="user">
             <div class="column">
                 <h4 class="title is-4">{{ $t('app.update_profile') }}</h4>
                 <form method="#" @submit.prevent="updateProfile">
@@ -87,6 +87,7 @@
 
 <script>
 import {Form} from "vform";
+import {mapState} from "vuex";
 
 export default {
     data() {
@@ -103,14 +104,11 @@ export default {
         }
     },
     created() {
-        const user = this.$store.getters.user;
-        this.form.name = user.name;
-        this.form.email = user.email;
+        this.form.name = this.user.name;
+        this.form.email = this.user.email;
     },
     computed: {
-        user() {
-            return this.$store.getters.user;
-        }
+        ...mapState(['user']),
     },
     methods: {
         updateProfile() {

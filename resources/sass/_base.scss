@@ -9,6 +9,22 @@ body {
 }
 
 html {
-    background: #f9f5fa;
-    background: linear-gradient(365deg, #f9f5fa, #efe4f2);
+    //background: #F8F8FF;
+    //background: linear-gradient(365deg, #f9f5fa, #efe4f2);
+}
+
+[v-cloak] > * { display:none }
+
+.screen-lock {
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    &.lock {
+        z-index: 100;
+    }
+
 }
