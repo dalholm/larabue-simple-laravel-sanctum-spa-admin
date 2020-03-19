@@ -76,7 +76,7 @@ export default {
             let self = this;
 
             this.$store.dispatch('login', {
-                username: this.username,
+                email: this.username,
                 password: this.password
             }).then(response => {
                 this.loading = false;

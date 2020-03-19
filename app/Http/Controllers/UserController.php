@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function get()
     {
-        return auth()->user();
+        return User::where('id', auth()->user()->id)->firstOrFail();
     }
 
     public function patch(UserRequest $request)

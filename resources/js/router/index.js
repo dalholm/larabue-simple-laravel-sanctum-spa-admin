@@ -28,17 +28,21 @@ router.beforeEach(async (to, from, next) => {
 
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
-
-        if (!store.getters.authCheck && store.getters.authToken) {
-            try {
-                await store.dispatch('fetchUser')
-            } catch (e) { }
+        if (!store.getters.isLoggedIn || store.getters.user == null) {
+            store.dispatch('fetchUser').then(response => {
+                next();
+            }).catch(error => {
+                next({
+                    path: '/login'
+                })
+            })
+        } else {
+            next()
         }
-
-        // if not, redirect to login page.
-        if (!store.getters.authToken) {
+    } else if (to.matched.some(record => record.meta.requiresVisitor)) {
+        if (store.getters.isLoggedIn) {
             next({
-                path: '/login'
+                path: '/'
             })
         }
     }

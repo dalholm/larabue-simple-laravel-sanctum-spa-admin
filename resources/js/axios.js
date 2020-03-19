@@ -5,6 +5,7 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios);
 
 
+axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use(
     (config) => {

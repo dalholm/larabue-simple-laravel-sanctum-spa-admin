@@ -13,16 +13,14 @@ export default new Vuex.Store({
         appLoading: 0,
         layout: 'app-layout', // app-layout || simple-layout
         user: null,
-        token: localStorage.getItem('access_token') || null,
-        expires: localStorage.getItem('token_expires') || 0,
-        expiresDate: localStorage.getItem('token_expires_date') || null,
+        logged_in: localStorage.getItem('logged_in') || false,
     },
     mutations: {
         appLoading(state, isLoading){
             if (isLoading) {
-                state.appLoading += 1;    
+                state.appLoading += 1;
             } else {
-                state.appLoading -= 1;    
+                state.appLoading -= 1;
             }
         },
         set_layout (state, payload) {
@@ -33,12 +31,12 @@ export default new Vuex.Store({
             state.expires = payload.expires;
             state.expiresDate = payload.expiresDate;
         },
+        login (state) {
+            state.logged_in = true;
+        },
         logout (state) {
-            state.token = null;
+            state.logged_in = false;
             state.user = null;
-            state.expires = 0;
-            state.expiresTimerRunning = false;
-            state.expiresDate = null;
         },
         set_user (state, user) {
             state.user = user;
@@ -46,18 +44,15 @@ export default new Vuex.Store({
     },
     actions: {
         logout(context) {
-            if (context.getters.authToken) {
+            if (context.state.logged_in) {
                 return new Promise((resolve, reject) => {
                     axios.post('/api/logout').then((result) => {
-                        localStorage.removeItem('access_token');
-                        localStorage.removeItem('token_expires');
-                        localStorage.removeItem('token_expires_date');
+                        localStorage.removeItem('logged_in');
                         context.commit('logout');
-
+                        router.push({name: 'login'})
                         resolve(result);
                     }).catch((e) => {
-                        localStorage.removeItem('access_token');
-                        localStorage.removeItem('token_expires');
+                        localStorage.removeItem('logged_in');
                         context.commit('logout');
                         reject(e);
                     });
@@ -66,26 +61,16 @@ export default new Vuex.Store({
         },
         login(context, payload) {
             return new Promise((resolve, reject) => {
-                axios.post('/api/login', payload).then(result => {
-                    const token = result.data.access_token;
-                    const expires = result.data.expires_in;
-                    localStorage.setItem('token_expires', expires);
-                    localStorage.setItem('access_token', token);
+                axios.get('/airlock/csrf-cookie').then(response => {
+                    axios.post('/api/login', payload).then(result => {
+                        localStorage.setItem('logged_in', true);
+                        context.commit('login');
 
-                    let expiresDate = new Date();
-                    expiresDate.setSeconds(expiresDate.getSeconds() + expires);
+                        resolve(result);
 
-                    localStorage.setItem('token_expires_date', expiresDate)
-                    context.commit('set_token', {
-                        token: token,
-                        expires: expires,
-                        expiresDate: expiresDate
+                    }).catch((e) => {
+                        reject(e);
                     });
-
-                    resolve(result);
-
-                }).catch((e) => {
-                    reject(e);
                 });
             });
         },
@@ -106,17 +91,8 @@ export default new Vuex.Store({
         }
     },
     getters: {
-        authCheck (state ) {
-            if (state.user) {
-                return true;
-            }
-            return false
-        },
-        authToken (state) {
-            return state.token;
-        },
-        token (state) {
-            return state.token;
+        isLoggedIn (state) {
+            return state.logged_in;
         },
         layout (state) {
             return state.layout;
@@ -125,8 +101,8 @@ export default new Vuex.Store({
             return state.user
         },
 
-        expiresDate (state) {
-            return state.expiresDate;
-        }
+        loading(state) {
+            return state.appLoading;
+        },
     }
 })

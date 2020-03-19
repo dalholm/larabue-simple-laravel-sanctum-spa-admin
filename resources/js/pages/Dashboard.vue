@@ -3,12 +3,6 @@
         <section>
             <h1 class="title is-2">Dashboard</h1>
             <div class="subtitle">With sample chart from gChart</div>
-            <GChart
-                type="ColumnChart"
-                :data="chartData"
-                :options="chartOptions"
-                style="height: 500px;"
-            />
             <div class="columns">
                 <div class="column">
 
