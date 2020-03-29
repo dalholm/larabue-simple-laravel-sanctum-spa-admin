@@ -4,8 +4,8 @@
             <h2 class="title is-2">{{user.name}}</h2>
             <div class="subtitle is-5">{{ $t('app.profile_subtitle') }}</div>
 
-            <p>{{ $t('app.registred') }}: {{user.created_at}}</p>
-            <p>{{ $t('app.last_updated') }}: {{user.updated_at}}</p>
+            <p>{{ $t('app.registred') }}: {{user.created_at | moment('calendar')}}</p>
+            <p>{{ $t('app.last_updated') }}: {{user.updated_at | moment('calendar')}}</p>
             <div class="divider"></div>
         </section>
         <div class="columns" v-if="user">
