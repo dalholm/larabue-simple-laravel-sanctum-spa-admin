@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:airlock')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', 'AuthController@logout');
 
     // User
