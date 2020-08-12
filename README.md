@@ -1,9 +1,9 @@
 <a href="https://packagist.org/packages/dalholm/larabue"><img src="https://poser.pugx.org/dalholm/larabue/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/dalholm/larabue"><img src="https://poser.pugx.org/dalholm/larabue/v/stable.svg" alt="Latest Stable Version"></a>
 
-# LVA Laravel Vuetifyjs Admin SPA 
+# Larabue Laravel vuejs buefy Admin SPA 
 
-A simple lightweight admin template based on laravel and vuetifyjs. Simple and clean
+A simple lightweight admin template based on laravel, vuejs and buefy. Implemented with Sanctum auth makes it Simple and clean
 
 ## Screenshot
 <p align="center">
