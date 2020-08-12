@@ -50,14 +50,19 @@ header {
 
 
         .navbar-brand {
-            background: white;
-
+            background: $primary-dark;
+            .navbar-item {
+                &.logo {
+                    padding: 0 35px;
+                    a {
+                        color: white;
+                        font-weight: 800;
+                        font-size: 22px;
+                    }
+                }
+            }
             @include touch {
                 background: $primary;
-                .logo {
-                    background: white;
-                    width: 100px;
-                }
             }
 
             .navbar-burger {

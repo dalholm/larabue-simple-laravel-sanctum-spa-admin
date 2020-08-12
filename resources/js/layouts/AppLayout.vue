@@ -5,9 +5,9 @@
         <header>
             <div class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                    <div class="logo">
+                    <div class="navbar-item logo">
                         <router-link :to="{name: 'dashboard'}">
-                            Larabue
+                            LOGO
                         </router-link>
                     </div>
                     <a role="button" class="navbar-burger burger"
