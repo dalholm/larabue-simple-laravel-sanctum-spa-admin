@@ -7,7 +7,7 @@ A simple lightweight admin template based on laravel and vuetifyjs. Simple and c
 
 ## Screenshot
 <p align="center">
-<img src="https://i.imgur.com/HIaxKmn.png">
+<img src="https://imgur.com/18BoKaO.png">
 </p>
 
 ## Features
