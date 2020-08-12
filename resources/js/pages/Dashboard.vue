@@ -2,12 +2,14 @@
     <div>
         <section>
             <h1 class="title is-2">Dashboard</h1>
-            <div class="subtitle">With sample chart from gChart</div>
+            <div class="subtitle">With sample chart from apexchart</div>
             <div class="columns">
                 <div class="column">
-
+                    <apexchart type="line" :options="options" :series="series"></apexchart>
                 </div>
-                <div class="column"></div>
+                <div class="column">
+                    <apexchart type="bar" :options="options" :series="series"></apexchart>
+                </div>
             </div>
         </section>
 
@@ -15,30 +17,27 @@
 </template>
 
 <script>
+    import VueApexCharts from 'vue-apexcharts'
     export default {
+        components: {
+            apexchart: VueApexCharts,
+        },
         data() {
             return {
-                // Array will be automatically processed with visualization.arrayToDataTable function
-                chartData: [
-                    ['Month', 'Sales', 'Expenses', 'Profit'],
-                    ['Jan', 1000, 400, 200],
-                    ['Feb', 1170, 460, 250],
-                    ['Mars', 660, 1120, 300],
-                    ['Apr', 1030, 540, 350],
-                    ['Jun', 1030, 540, 350],
-                    ['Jul', 1030, 540, 350],
-                    ['Aug', 2500, 540, 350],
-                    ['Sep', 1030, 540, 350],
-                    ['Oct', 1030, 540, 350],
-                    ['Nov', 1030, 540, 350],
-                    ['Dec', 1030, 540, 350],
-                ],
-                chartOptions: {
+                options: {
+                    colors: ['#F4DECB', '#49274A', '#94618E', '#180d18', '#FF9800'],
+                    height: 'auto',
                     chart: {
-                        title: 'Company Performance',
-                        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                        id: 'basic-bar'
+                    },
+                    xaxis: {
+                        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
                     }
-                }
+                },
+                series: [{
+                    name: 'series-1',
+                    data: [30, 40, 45, 50, 49, 60, 70, 91]
+                }]
             }
         },
     }
