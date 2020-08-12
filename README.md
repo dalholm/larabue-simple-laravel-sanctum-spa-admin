@@ -1,5 +1,5 @@
-<a href="https://packagist.org/packages/dalholm/laravel-vuetify-spa-admin"><img src="https://poser.pugx.org/dalholm/laravel-vuetify-spa-admin/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/dalholm/laravel-vuetify-spa-admin"><img src="https://poser.pugx.org/dalholm/laravel-vuetify-spa-admin/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/dalholm/larabue"><img src="https://poser.pugx.org/dalholm/larabue/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/dalholm/larabue"><img src="https://poser.pugx.org/dalholm/larabue/v/stable.svg" alt="Latest Stable Version"></a>
 
 # LVA Laravel Vuetifyjs Admin SPA 
 
@@ -21,17 +21,19 @@ A simple lightweight admin template based on laravel and vuetifyjs. Simple and c
 - Webpack with [laravel-mix](https://github.com/JeffreyWay/laravel-mix)
 
 ## Installation
-- `git clone git@github.com:dalholm/laravel-vuetify-spa-admin.git`
+- `git clone git@github.com:dalholm/larabue-simple-laravel-sanctum-spa-admin.git`
 - `cd laravel-vuetify-spa-admin`
 - `cp .env.example .env`
 - Edit `.env` and set your database connection details
+- Edit `SANCTUM_STATEFUL_DOMAINS=` to your domain.com
+- Edit `SESSION_DOMAIN` to your `.domain.com`
 - `composer install`
 - `php artisan key:generate`
 - `php artisan migrate`
 - `npm install` / `yarn`
 
 #### Composer
-- `composer create-project dalholm/laravel-vuetify-spa-admin && cd laravel-vuetify-spa-admin`
+- `composer create-project dalholm/larabue && cd larabue`
 - `npm install` / `yarn`
 
 ## Usage
