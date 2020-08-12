@@ -1,12 +1,17 @@
 {
     "name": "dalholm/larabue",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
+    "description": "A simple lightweight admin template based on laravel, vuejs and buetify. Implemented with Sanctum auth makes it Simple and clean",
+    "keywords": ["spa", "laravel", "vue","sanctum", "vuejs", "admin", "template", "frontend", "buetify", "bulma", "Boilerplate"],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Mikael Dalholm",
+            "email": "mikael@dalholm.se",
+            "homepage": "http://www.dalholm.se",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^7.2.5",
         "fideloper/proxy": "^4.2",
