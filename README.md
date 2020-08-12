@@ -3,7 +3,7 @@
 
 # Larabue Laravel vuejs buefy Admin SPA 
 
-A simple lightweight admin template based on laravel, vuejs and buefy. Implemented with Sanctum auth makes it Simple and clean
+A simple lightweight admin template based on laravel, vuejs and buefy. Implemented with Sanctum and makes everything just simple and clean.
 
 ## Screenshot
 <p align="center">

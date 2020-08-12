@@ -1,7 +1,7 @@
 {
     "name": "dalholm/larabue",
     "type": "project",
-    "description": "A simple lightweight admin template based on laravel, vuejs and buefy. Implemented with Sanctum auth makes it Simple and clean",
+    "description": "A simple lightweight admin template based on laravel, vuejs and buefy. Implemented with Sanctum and makes everything just simple and clean.",
     "keywords": ["spa", "laravel", "vue","sanctum", "vuejs", "admin", "template", "frontend", "buefy", "bulma", "Boilerplate"],
     "license": "MIT",
     "authors": [
