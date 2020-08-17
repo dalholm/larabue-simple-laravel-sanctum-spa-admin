@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="user">
         <worker-component></worker-component>
         <div class="screen-lock" :class="{ 'lock' : appLoading}"></div>
         <header>
