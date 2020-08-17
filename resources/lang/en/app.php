@@ -33,7 +33,11 @@ return [
     'login_button' => 'Sign in',
     'no_account' => 'No account?',
     'register_account' => 'Register account',
+    'forgot_password' => 'Forgot password',
+    'change_password' => 'Change password',
 
+    'send' => 'Send',
+    'done' => 'Done',
     // Register
     'existing_account' => 'Already have an account?',
 

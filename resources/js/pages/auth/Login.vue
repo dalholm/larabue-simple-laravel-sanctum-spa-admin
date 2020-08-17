@@ -4,7 +4,7 @@
             <div class="login">
                 <header>
                     <b-icon
-                        icon="account"
+                            icon="account"
                     >
                     </b-icon>
                     <h1>{{ $t('app.welcome_back') }}</h1>
@@ -45,7 +45,7 @@
                     </form>
 
                     <div class="divider"></div>
-
+                    <p class="has-text-centered"><router-link :to="{name: 'forgot'}">Glömt lösenord?</router-link></p>
                     <p class="is-centered">{{ $t('app.no_account') }} - <router-link :to="{name: 'register'}">{{ $t('app.register_account') }}</router-link></p>
 
                 </section>

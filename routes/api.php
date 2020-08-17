@@ -26,3 +26,9 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::post('/login', 'AuthController@login');
 
 Route::post('/register', 'UserController@register');
+
+// Send reset password mail
+Route::post('reset-password', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+
+// handle reset password form process
+Route::post('reset/password', 'Auth\ResetPasswordController@reset');
