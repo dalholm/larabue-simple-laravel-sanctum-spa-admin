@@ -45,9 +45,6 @@
                 <b-table-column field="name" :label="$t('app.name')" v-slot="props">
                     {{ props.row.name }}
                 </b-table-column>
-                <b-table-column field="email" :label="$t('app.email')" v-slot="props">
-                    {{ props.row.email }}
-                </b-table-column>
                 <b-table-column v-slot="props" numeric>
                     <b-button size="is-small" icon-left="pencil"
                               @click="selected = props.row"
