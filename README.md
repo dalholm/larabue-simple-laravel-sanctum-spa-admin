@@ -33,11 +33,14 @@ A simple lightweight admin template based on laravel, vuejs and buefy. Implement
 - `php artisan db:seed`
 - `npm install` / `yarn`
 
-#### Composer
+### Composer
 - `composer create-project dalholm/larabue && cd larabue`
 - `npm install` / `yarn`
 
-## Usage
+### Usage
+- login: yourdomain.test/login
+- Username: admin@admin.com
+- Password: admin
 
 #### Development
 
