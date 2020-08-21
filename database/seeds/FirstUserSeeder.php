@@ -13,11 +13,11 @@ class FirstUserSeeder extends Seeder
     {
         $user = \App\User::create([
             'name' => 'Admin',
-            'email' => 'admins@admin.com',
+            'email' => 'admin@admin.com',
             'password' => bcrypt('admin')
         ]);
-        $role = \Spatie\Permission\Models\Role::create(['name' => 'bubbe']);
+        $role = \Spatie\Permission\Models\Role::create(['name' => 'admin']);
 
-        $user->assignRole('bubbe');
+        $user->assignRole('admin');
     }
 }
