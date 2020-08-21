@@ -1,8 +1,8 @@
 <template>
     <div>
         <section>
-            <h1 class="title is-2">Dashboard</h1>
-            <div class="subtitle">With sample chart from apexchart</div>
+            <h1 class="title is-4">Dashboard</h1>
+            <div class="subtitle is-5">With sample chart from apexchart</div>
             <div class="columns">
                 <div class="column">
                     <apexchart type="line" :options="options" :series="series"></apexchart>
@@ -25,7 +25,7 @@
         data() {
             return {
                 options: {
-                    colors: ['#F4DECB', '#49274A', '#94618E', '#180d18', '#FF9800'],
+                    colors: ['#e3e8ee', 'rgb(84, 105, 212)', '#3c4257', '#180d18', '#FF9800'],
                     height: 'auto',
                     chart: {
                         id: 'basic-bar'

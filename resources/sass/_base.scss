@@ -1,6 +1,8 @@
 @import 'theme';
 @import '~@mdi/font/css/materialdesignicons.min.css';
 @import 'worker';
+@import '_table';
+@import '_sidebar';
 
 html,
 body {
@@ -9,7 +11,7 @@ body {
 }
 
 html {
-    //background: #F8F8FF;
+    //background: rgba(229,231,235);
     //background: linear-gradient(365deg, #f9f5fa, #efe4f2);
 }
 

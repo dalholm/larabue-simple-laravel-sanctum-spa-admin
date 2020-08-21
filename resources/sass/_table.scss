@@ -1,0 +1,24 @@
+
+
+table.table {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  border-radius: .5rem;
+  thead {
+    vertical-align: middle;
+    border: 0 solid #d2d6dc;
+    box-sizing: border-box;
+    tr {
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      background: rgba(249,250,251, 1);
+      font-size: .75rem;
+      font-weight: 500;
+      th {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        color: rgba(107,114,128, 1);
+        line-height: 2rem;
+      }
+    }
+  }
+}

@@ -45,7 +45,7 @@
                     </form>
 
                     <div class="divider"></div>
-                    <p class="has-text-centered"><router-link :to="{name: 'forgot'}">Glömt lösenord?</router-link></p>
+                    <p class="has-text-centered"><router-link :to="{name: 'forgot'}">{{$t('app.forgot_password')}}?</router-link></p>
                     <p class="is-centered">{{ $t('app.no_account') }} - <router-link :to="{name: 'register'}">{{ $t('app.register_account') }}</router-link></p>
 
                 </section>
@@ -80,8 +80,17 @@ export default {
                 password: this.password
             }).then(response => {
                 this.loading = false;
-                this.$buefy.snackbar.open("Welcome!");
-                this.$router.push({ name: 'dashboard' });
+                this.$router.push({
+                    name: 'dashboard',
+                }).then((e) => {
+                    this.$buefy.notification.open({
+                        message: this.$t('app.welcome_back'),
+                        type: 'is-success'
+                    });
+                    //window.location.href = window.location.href
+                }).catch(e => {
+                    console.log(e);
+                })
             }).catch(e => {
                 this.loading = false;
                 self.error = true;

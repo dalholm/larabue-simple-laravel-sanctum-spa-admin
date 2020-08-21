@@ -65,7 +65,6 @@ export default new Vuex.Store({
                     axios.post('/api/login', payload).then(result => {
                         localStorage.setItem('logged_in', true);
                         context.commit('login');
-
                         resolve(result);
 
                     }).catch((e) => {

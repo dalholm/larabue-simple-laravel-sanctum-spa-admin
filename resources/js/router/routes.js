@@ -8,7 +8,8 @@ import ForgotPassword from "../pages/auth/ForgotPassword";
 import ForgotPasswordForm from "../pages/auth/ForgotPasswordForm";
 
 import PageNotFound from "../pages/PageNotFound";
-
+import Users from "../pages/Settings";
+import admin_routes from "./admin_routes";
 
 export default () => [
     {
@@ -26,7 +27,8 @@ export default () => [
         name: 'login',
         component: Login,
         meta: {
-            layout: 'simple-layout'
+            layout: 'simple-layout',
+            guest: true
         }
     }, {
         path: '/logout',
@@ -38,7 +40,8 @@ export default () => [
         name: 'register',
         component: Register,
         meta: {
-            layout: 'simple-layout'
+            layout: 'simple-layout',
+            guest: true
         }
     }, {
         path: '/forgot',
@@ -46,7 +49,7 @@ export default () => [
         component: ForgotPassword,
         meta: {
             layout: 'simple-layout',
-            requiresVisitor: true
+            guest: true
         }
     }, {
         path: '/reset-password/:token',
@@ -54,9 +57,11 @@ export default () => [
         component: ForgotPasswordForm,
         meta: {
             layout: 'simple-layout',
-            requiresVisitor: true
+            guest: true
         }
     },
+    ...admin_routes(),
+
     // 404 page
     {
         path: "*",

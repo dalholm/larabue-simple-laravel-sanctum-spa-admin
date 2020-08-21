@@ -11,16 +11,15 @@ $lighter: hsla(306%, 25%, 92%, 1);
 $lightest: hsla(230%, 35%, 79%, 1);
 
 /* RGB */
-$primary: #49274A;
-$primary-dark: #180d18;
-$secondary: #94618E;
-$light: #F4DECB;
-$lighter: #F8EEE7;
+$primary: #3c4257;
+$secondary: rgb(84, 105, 212);
+$light: #e3e8ee;
 $lightest: lighten($lighter, 5%);
 $grey: #e4e4e5;
 $light-grey: #F8F8F9;
 
 $primary-invert: findColorInvert($primary);
+
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
 
@@ -50,3 +49,15 @@ $main-border-radius: 8px;
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+
+.button {
+  height: 2.25em;
+  &.is-small {
+    border-radius: 5px;
+  }
+}
+
+section.section {
+  padding-left: 0;
+  padding-right: 0;
+}

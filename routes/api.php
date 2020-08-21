@@ -21,6 +21,25 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/user', 'UserController@patch');
     Route::patch('/user/password', 'UserController@password');
 
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::prefix('users')->group(function () {
+            Route::post('/', 'UserController@search');
+            Route::put('/', 'UserController@put');
+            Route::delete('/{id}', 'UserController@delete');
+            Route::patch('/update', 'UserController@update');
+
+            Route::prefix('roles')->group(function () {
+                Route::get('/', 'Auth\RoleController@all');
+                Route::post('/', 'Auth\RoleController@search');
+                Route::put('/', 'Auth\RoleController@put');
+                Route::delete('/{id}', 'Auth\RoleController@delete');
+                Route::patch('/', 'Auth\RoleController@patch');
+            });
+        });
+
+
+
+    });
 });
 
 Route::post('/login', 'AuthController@login');

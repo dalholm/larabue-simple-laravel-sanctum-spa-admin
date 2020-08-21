@@ -23,11 +23,7 @@
                 <div class="navbar-menu" :class="{ 'is-active' : appMenuOpen }">
                     <router-link :to="{name: 'dashboard'}" class="navbar-item route">
                         <i class="mdi mdi-monitor-dashboard"></i>
-                        Dashboard
-                    </router-link>
-                    <router-link :to="{name: 'profile'}" class="navbar-item route">
-                        <i class="mdi mdi-account"></i>
-                        Profile
+                        {{$t('app.dashboard')}}
                     </router-link>
 
                     <div class="navbar-end">
@@ -51,6 +47,14 @@
                                     {{ $t('app.profile') }}
                                 </router-link>
                             </b-dropdown-item>
+
+                            <b-dropdown-item has-link>
+                                <router-link :to="{name: 'settings'}" v-if="user.has_role['admin']">
+                                    <b-icon icon="application-cog"></b-icon>
+                                    {{ $t('app.settings') }}
+                                </router-link>
+                            </b-dropdown-item>
+
                             <hr class="dropdown-divider">
                             <b-dropdown-item has-link>
                                 <router-link :to="{name: 'logout'}">
@@ -109,5 +113,8 @@
         computed: {
             ...mapState(['user', 'appLoading']),
         },
+        mounted() {
+            //console.log(JSON.parse(this.user));
+        }
     }
 </script>

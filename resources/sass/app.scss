@@ -50,7 +50,7 @@ header {
 
 
         .navbar-brand {
-            background: $primary-dark;
+            background: $primary;
             .navbar-item {
                 &.logo {
                     padding: 0 35px;
@@ -227,6 +227,14 @@ ul.summary {
 
 }
 
+.modal {
+    header {
+        .modal-card-title {
+            color: white!important;
+        }
+    }
+}
+
 .modal-card {
     header {
         background: $primary;
@@ -324,11 +332,18 @@ ul.summary {
     100%{   opacity: 1; }
 }
 
-footer {
+footer.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background-color: $light-grey;
     border-bottom-right-radius: $main-border-radius;
     border-bottom-left-radius: $main-border-radius;
+    padding: 3rem 1.5rem;
     @include touch {
         border-radius: 0;
+        position: relative;
     }
+
 }

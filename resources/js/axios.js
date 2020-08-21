@@ -35,9 +35,6 @@ axios.interceptors.response.use(function (response) {
     // Do something with response error
     store.commit('appLoading', false);
 
-    if (error.response.status === 401) {
-        store.dispatch('logout');
-    }
     return Promise.reject(error);
   });
 

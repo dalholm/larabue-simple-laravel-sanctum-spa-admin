@@ -7,19 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ForgotPasswordMail extends Notification
+class NewUserNotification extends Notification
 {
     use Queueable;
 
-    protected $token;
+    protected $password;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($password)
     {
-        $this->token = $token;
+        $this->password = $password;
     }
 
     /**
@@ -41,21 +42,30 @@ class ForgotPasswordMail extends Notification
      */
     public function toMail($notifiable)
     {
-        $link = url( "/reset-password/".$this->token );
-
         return (new MailMessage)
-            ->subject(trans('notifications.forgot_password.subject', [
+            ->subject(trans('notifications.new_user.subject', [
                 'app_name' => env('APP_NAME')
             ]))
-            ->greeting(trans('notifications.forgot_password.greeting'))
-            ->line(trans('notifications.forgot_password.first_line', [
+            ->greeting(trans('notifications.new_user.greeting', [
+                'name' => $notifiable->name
+            ]))
+            ->line(trans('notifications.new_user.first_line', [
                 'app_name' => env('APP_NAME')
             ]))
-            ->action(trans('notifications.forgot_password.action'), $link)
-            ->line(trans('notifications.forgot_password.last_line'))
+            ->line(trans('notifications.new_user.username', [
+                'email' => $notifiable->email
+            ]))
+            ->line(trans('notifications.new_user.password', [
+                'password' => $this->password
+            ]))
+            ->action(trans('notifications.new_user.action', [
+                'app_name' => env('APP_NAME')
+            ]), url('/'))
+            ->line(trans('notifications.new_user.last_line'))
             ->salutation(trans('notifications.new_user.salutation', [
                 'app_name' => env('APP_NAME')
             ]));
+
     }
 
     /**

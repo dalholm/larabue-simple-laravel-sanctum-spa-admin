@@ -2,6 +2,7 @@ import Vue from 'vue'
 import routes from './routes'
 import Router from 'vue-router'
 import store from '../store';
+import { NotificationProgrammatic as Notification } from 'buefy'
 
 Vue.use(Router);
 
@@ -29,17 +30,53 @@ router.beforeEach(async (to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
         if (!store.getters.isLoggedIn || store.getters.user == null) {
-            store.dispatch('fetchUser').then(response => {
+            try {
+                let {data} = await store.dispatch('fetchUser');
+
+                // check if the user has the correct role
+                if (to.meta.role) {
+                    if (data.has_role[to.meta.role]) {
+                        next();
+                    } else {
+                        Notification.open({
+                            message: 'Missing permissions!',
+                            type: 'is-danger'
+                        })
+                        next({
+                            path: '/404'
+                        })
+                    }
+                }
                 next();
-            }).catch(error => {
+            } catch (e) {
                 next({
                     path: '/login'
                 })
-            })
+            }
         } else {
-            next()
+            // check if the user has the correct role
+            if (to.meta.role) {
+                if (store.getters.user.has_role[to.meta.role]) {
+                    next();
+                } else {
+                    Notification.open({
+                        message: 'Missing permissions!',
+                        type: 'is-danger'
+                    })
+                    try {
+                        next({
+                            path: '/404'
+                        })
+                    } catch (e) {
+                        console.log(e);
+                    }
+
+                }
+            } else {
+                next()
+            }
         }
-    } else if (to.matched.some(record => record.meta.requiresVisitor)) {
+    } else if (to.matched.some(record => record.meta.guest)) {
         if (store.getters.isLoggedIn) {
             next({
                 path: '/'

@@ -4,9 +4,12 @@ import Buefy from 'buefy'
 import router from './router';
 import store from './store.js';
 import i18n from './plugins/vuex-i18n'
+import Plugins from './plugins'
 import vueDebounce from 'vue-debounce'
 import VueCurrencyFilter from 'vue-currency-filter'
 import VueMoment from 'vue-moment'
+
+Vue.use(Plugins);
 
 Vue.use(VueCurrencyFilter,
     {
@@ -29,7 +32,8 @@ Vue.use(Buefy, {
     },
     defaultDateParser: date => {
         return moment(date, "YYYY-MM-DD").toDate();
-    }
+    },
+    defaultNotificationPosition: 'is-top'
 });
 Vue.use(vueDebounce);
 Vue.use(require('vue-moment'), {

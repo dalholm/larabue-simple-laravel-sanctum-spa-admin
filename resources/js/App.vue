@@ -11,17 +11,13 @@
     import { mapState } from 'vuex';
 
     export default {
-        computed: mapState(['layout', 'token']),
+        computed: mapState(['layout']),
         components: {
             'app-layout': AppLayout,
             'simple-layout': SimpleLayout
         },
         watch: {
-            token(newVal, oldVal) {
-                if (!newVal) {
-                    this.$router.push({name: 'logout'});
-                }
-            }
+
         },
         created() {
 

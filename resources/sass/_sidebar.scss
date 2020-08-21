@@ -1,0 +1,80 @@
+@import "~bulma-quickview";
+
+$quickview-width: 360px !default;
+.quickview-wrapper {
+  .quickview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: hsla(0,0%,4%,.86);
+    z-index: 40;
+  }
+  .quickview-wrapper {
+    .quickview-overlay {
+      display: none;
+    }
+  }
+  .quickview {
+    transition: 1s;
+    right: 0;
+    z-index: 45;
+    width: $quickview-width;
+    animation: slide-out 0.4s ease;
+
+    &.is-active {
+      animation: slide-in 0.4s ease;
+    }
+
+    &.is-medium {
+      width: 50%;
+      max-width: 50%;
+    }
+
+    &.is-large {
+      width: 75%;
+      max-width: 75%;
+    }
+
+    @include touch {
+      width: 100%!important;
+      max-width: 100%!important;
+    }
+    .quickview-header {
+      background: $primary;
+      color: white;
+      .title {
+        color: white;
+        font-weight: bold;
+      }
+    }
+
+    .quickview-body {
+      padding-bottom: 6rem;
+      .quickview-block {
+        padding: 1rem;
+      }
+    }
+
+    .quickview-footer {
+
+    }
+
+    // If a quickview is inside a quickview
+    .quickview {
+      width: 95%;
+      max-width: 95%;
+    }
+  }
+}
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

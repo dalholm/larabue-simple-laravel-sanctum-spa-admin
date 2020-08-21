@@ -27,6 +27,8 @@ return [
     'profile_subtitle' => 'Profile and settings',
     'registred' => 'Registred',
     'last_updated' => 'Last updated',
+    'cancel' => 'Cancel',
+    'save' => 'Save',
 
     // Login Screen
     'welcome_back' => 'Welcome back!',
@@ -36,9 +38,39 @@ return [
     'forgot_password' => 'Forgot password',
     'change_password' => 'Change password',
 
+    'dashboard' => 'Dashboard',
+
     'send' => 'Send',
     'done' => 'Done',
     // Register
     'existing_account' => 'Already have an account?',
 
+    //Users
+    'users' => 'Users',
+    'user' => 'User',
+    // Roles
+    'roles' => 'Roles',
+    'role' => 'Role',
+
+    // Settings
+    'settings' => 'Settings',
+
+    'table' => [
+        'empty' => 'This table is empty...'
+    ],
+
+    // Messages
+    'error' => [
+        'general' => 'Whops, something went wrong. Try again!'
+    ],
+
+    'saved' => 'Saved successfully!',
+
+    // Delete
+    'deleted' => 'Deleted successfully!',
+    'delete' => [
+        'title' => 'Are you sure?',
+        'message' => 'Are you really sure, this can not be undone.',
+        'button' => 'Yes, delete'
+    ],
 ];

@@ -17,7 +17,7 @@ class AuthController extends Controller
             'email' => $email,
             'password' => $password
         ], true)) {
-            return response()->json('', 204 );
+            return Auth::user();
         }else{
             return response()->json([
                 'error' => 'invalid_credentials'

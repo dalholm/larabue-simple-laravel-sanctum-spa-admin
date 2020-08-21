@@ -14,6 +14,12 @@ Route::get('/', function () {
     return view('app');
 });
 
+Route::get('/mail', function () {
+    $user = \App\User::first();
+    $password = 'dasdsad';
+    return (new \App\Notifications\ForgotPasswordMail($password))->toMail($user);
+});
+
 // Localization
 Route::get('/js/{language}/lang', function ($language) {
 
