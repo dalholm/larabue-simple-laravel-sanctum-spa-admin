@@ -7,7 +7,7 @@ A simple lightweight admin template based on laravel, vuejs and buefy. Implement
 
 ## Screenshot
 <p align="center">
-<img src="https://imgur.com/18BoKaO.png">
+<img src="https://i.imgur.com/6vkD7Qo.gif">
 </p>
 
 ## Features

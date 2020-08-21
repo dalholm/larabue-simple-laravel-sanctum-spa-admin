@@ -75,6 +75,7 @@ class RoleController extends Controller
 
     public function delete(Request $request, $role_id)
     {
-        Role::findById($role_id)->delete();
+        $role = Role::where('id', $role_id)->firstOrFail();
+        $role->delete();
     }
 }
