@@ -48,6 +48,11 @@
                 <b-table-column field="email" :label="$t('app.email')" v-slot="props">
                     {{ props.row.email }}
                 </b-table-column>
+                <b-table-column :label="$t('app.roles')" v-slot="props">
+                    <b-tag v-for="(role, index) in props.row.roles" :key="index">
+                        {{role.name}}
+                    </b-tag>
+                </b-table-column>
                 <b-table-column v-slot="props" numeric>
                     <b-button size="is-small" icon-left="pencil"
                               @click="selected = props.row"
