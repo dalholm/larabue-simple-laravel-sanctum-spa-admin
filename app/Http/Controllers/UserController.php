@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -35,6 +36,9 @@ class UserController extends Controller
             'password' => bcrypt($password)
             ] + $request->all());
 
+
+        $user->syncRoles($request->get('userRoles'));
+
         $user->notify(new NewUserNotification($password));
         return $user;
     }
@@ -49,7 +53,7 @@ class UserController extends Controller
                 'email' => $request->email,
             ]);
 
-        $user->syncRoles($request->get('userRoles'));
+        $user->syncRoles($request->get('userRoles'), 'sanctum');
         return response()->json('', 204);
     }
 
