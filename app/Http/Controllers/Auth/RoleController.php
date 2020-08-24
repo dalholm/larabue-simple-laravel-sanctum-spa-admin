@@ -60,7 +60,7 @@ class RoleController extends Controller
             'name' => 'required'
         ]);
 
-        return Role::create($request->all());
+        return Role::create(['guard_name' => 'web'] + $request->all());
     }
 
     public function patch(Request $request)

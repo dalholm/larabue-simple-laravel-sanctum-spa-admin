@@ -53,7 +53,7 @@ class UserController extends Controller
                 'email' => $request->email,
             ]);
 
-        $user->syncRoles($request->get('userRoles'), 'sanctum');
+        $user->syncRoles($request->get('userRoles'));
         return response()->json('', 204);
     }
 
