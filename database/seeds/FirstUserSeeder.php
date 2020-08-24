@@ -18,6 +18,6 @@ class FirstUserSeeder extends Seeder
         ]);
         $role = \Spatie\Permission\Models\Role::create(['name' => 'admin']);
 
-        $user->assignRole('admin');
+        $user->assignRole($role);
     }
 }
