@@ -21,8 +21,8 @@ A simple lightweight admin template based on laravel, vuejs and buefy. Implement
 - Webpack with [laravel-mix](https://github.com/JeffreyWay/laravel-mix)
 
 ## Installation
-- `git clone git@github.com:dalholm/larabue-simple-laravel-sanctum-spa-admin.git`
-- `cd laravel-vuetify-spa-admin`
+- `git clone git@github.com:dalholm/larabue-simple-laravel-sanctum-spa-admin.git yourprojectname`
+- `cd yourprojectname`
 - `cp .env.example .env`
 - Edit `.env` and set your database connection details
 - Edit `SANCTUM_STATEFUL_DOMAINS=` to your domain.com
@@ -36,6 +36,9 @@ A simple lightweight admin template based on laravel, vuejs and buefy. Implement
 ### Composer
 - `composer create-project dalholm/larabue && cd larabue`
 - `npm install` / `yarn`
+- Edit `.env` and set your database connection details
+- `php artisan migrate`
+- `php artisan db:seed`
 
 ### Usage
 - login: yourdomain.test/login
